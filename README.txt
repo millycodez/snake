@@ -1,5 +1,5 @@
 Watched a tutorial and created this snake game with a few of my own features and tweaks.
-I made these tweaks based off of feedback from my girlfriend who i had play the game.
+I made these tweaks based off of feedback from my friend who i had play the game.
 
 STEPS TO PLAY BELOW!!!
 
