@@ -1,0 +1,16 @@
+lpp 3
+ggg 0
+mog 1
+ggg 1
+ggg 0
+ggg 0
+ggg 0
+ggg 0
+aaa 0
+bbb 0
+ggg 0
+ggg 0
+mgs 0
+lol 0
+aaa 1
+nms 7
