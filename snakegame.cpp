@@ -69,7 +69,7 @@ void SnakeGame::Setup() {
     cbreak();
     curs_set(0);
     start_color();
-    init_pair(1, COLOR_YELLOW, COLOR_BLACK);  // Define color pair for yellow fruit
+    init_pair(1, COLOR_YELLOW, COLOR_BLACK);
 }
 
 // Draw function to render the game area and snake
@@ -87,9 +87,9 @@ void SnakeGame::Draw() {
             else if (i == snake[0].y && j == snake[0].x)
                 mvprintw(i, j, "O");
             else if (i == fruit.y && j == fruit.x) {
-                attron(COLOR_PAIR(1));  // Turn on yellow color
+                attron(COLOR_PAIR(1)); 
                 mvprintw(i, j, "*");  // Use asterisk for fruit
-                attroff(COLOR_PAIR(1));  // Turn off yellow color
+                attroff(COLOR_PAIR(1));  
             } else {
                 bool printTail = false;
                 for (int k = 1; k < nTail; k++) {
@@ -160,16 +160,16 @@ void SnakeGame::Logic() {
     // Move snake's head according to direction
     switch (dir) {
     case LEFT:
-        snake[0].x -= 2;  // Move 2 steps to compensate for character width
+        snake[0].x -= 2;  
         break;
     case RIGHT:
-        snake[0].x += 2;  // Move 2 steps to compensate for character width
+        snake[0].x += 2;  
         break;
     case UP:
-        snake[0].y--;  // Move 1 step vertically
+        snake[0].y--;  
         break;
     case DOWN:
-        snake[0].y++;  // Move 1 step vertically
+        snake[0].y++; 
         break;
     default:
         break;
@@ -209,32 +209,28 @@ void SnakeGame::GameOver() {
     mvprintw(height / 2 + 2, width / 2 - 15, "Enter 3-letter name: ");
     refresh();
 
-    char name[4] = {'\0'}; // Buffer to hold the name
-    int nameLength = 0; // Current length of the name
-    echo(); // Enable echoing of characters
+    char name[4] = {'\0'}; 
+    int nameLength = 0; 
+    echo(); 
 
     while (nameLength < 3) {
         int ch = getch();
         if ((ch == 127 || ch == KEY_BACKSPACE) && nameLength > 0) {
-            // Handle backspace (ASCII 127 or KEY_BACKSPACE) and decrement name length
             name[--nameLength] = '\0';
         } else if (isalpha(ch) && nameLength < 3) {
-            // Allow only alphabetic characters and limit to exactly 3 characters
             name[nameLength++] = ch;
-            name[nameLength] = '\0'; // Ensure the string is null-terminated
+            name[nameLength] = '\0'; 
         }
 
-        // Clear the previous input area by printing spaces over it
-        mvprintw(height / 2 + 2, width / 2, "%-15s", " "); // Clear previous input area
-        // Print the current input
+        mvprintw(height / 2 + 2, width / 2, "%-15s", " "); 
         mvprintw(height / 2 + 2, width / 2 - 15, "Enter 3-letter name: %-3s", name);
         refresh();
     }
 
-    noecho(); // Disable echoing of characters
-    playerName = std::string(name); // Correctly assign the name to playerName
+    noecho(); 
+    playerName = std::string(name);
 
-    SaveScore(); // Save the score with the player's name
+    SaveScore();
 
     mvprintw(height / 2 + 4, width / 2 - 20, "Press '1' to play again or '2' for main menu");
     refresh();
